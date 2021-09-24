@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="activity"
+            type="com.ricky.demo.MainActivity" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:context="com.ricky.enavigation.com.ricky.demo.MainActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="基础跳转"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_navigate_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()-> activity.onNavigate1Click() }"
+                android:text="同模块跳转" />
+
+            <Button
+                android:id="@+id/btn_navigate_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()-> activity.onNavigate2Click() }"
+                android:text="跨模块跳转(目标类可见)" />
+
+            <Button
+                android:id="@+id/btn_navigate_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()-> activity.onNavigate3Click() }"
+                android:text="跨模块跳转(目标类不可见)" />
+
+            <Button
+                android:id="@+id/btn_navigate_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()-> activity.onNavigate4Click() }"
+                android:text="不依赖Activity跳转" />
+
+            <Button
+                android:id="@+id/btn_navigate_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()-> activity.onNavigate5Click() }"
+                android:text="子线程跳转" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="btn_navigate_1,btn_navigate_2,btn_navigate_3,btn_navigate_4,btn_navigate_5"
+                app:flow_horizontalGap="10dp"
+                app:flow_verticalGap="10dp"
+                app:flow_wrapMode="chain"
+                app:layout_constraintTop_toBottomOf="@id/tv_title1" />
+
+            <TextView
+                android:id="@+id/tv_title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="参数传递"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/flow1" />
+
+            <EditText
+                android:id="@+id/et_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="请输入传递的字符串" />
+
+            <Button
+                android:id="@+id/btn_bring_args"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()-> activity.onBringDataClick() }"
+                android:text="带参数跳转" />
+
+            <Button
+                android:id="@+id/btn_data_callback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()-> activity.onDataCallbackClick() }"
+                android:text="数据回传" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="et_text,btn_bring_args,btn_data_callback"
+                app:flow_horizontalGap="10dp"
+                app:flow_verticalGap="10dp"
+                app:flow_wrapMode="chain"
+                app:layout_constraintTop_toBottomOf="@id/tv_title2" />
+
+            <TextView
+                android:id="@+id/tv_title3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="跳转前后监听"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/flow2" />
+
+            <Button
+                android:id="@+id/btn_action_listener"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()-> activity.onActionListenerClick() }"
+                android:text="跳转前后监听" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="btn_action_listener"
+                app:flow_horizontalGap="10dp"
+                app:flow_verticalGap="10dp"
+                app:flow_wrapMode="chain"
+                app:layout_constraintTop_toBottomOf="@id/tv_title3" />
+
+            <TextView
+                android:id="@+id/tv_title4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="拦截器"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/flow3" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/sc_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="全局拦截器" />
+
+            <Button
+                android:id="@+id/btn_anno_interceptor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()-> activity.onAnnoInterceptorClick() }"
+                android:text="注解拦截器" />
+
+            <Button
+                android:id="@+id/btn_add_interceptor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()-> activity.onAddInterceptorClick() }"
+                android:text="运行时添加拦截器" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="sc_7,btn_anno_interceptor,btn_add_interceptor"
+                app:flow_horizontalGap="10dp"
+                app:flow_verticalGap="10dp"
+                app:flow_wrapMode="chain"
+                app:layout_constraintTop_toBottomOf="@id/tv_title4" />
+
+            <TextView
+                android:id="@+id/tv_title5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="跳转动画"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/flow4" />
+
+            <HorizontalScrollView
+                android:id="@+id/scroll_anim"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fillViewport="true">
+
+                <RadioGroup
+                    android:id="@+id/anim_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="入场+出场" />
+
+                    <RadioButton
+                        android:id="@+id/anim_fade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="fade" />
+
+                    <RadioButton
+                        android:id="@+id/anim_expand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="expand" />
+
+                    <RadioButton
+                        android:id="@+id/anim_right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="right" />
+
+                    <RadioButton
+                        android:id="@+id/anim_bottom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="bottom" />
+
+                    <RadioButton
+                        android:id="@+id/anim_top"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="top" />
+
+
+                    <RadioButton
+                        android:id="@+id/anim_left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="left" />
+
+                </RadioGroup>
+            </HorizontalScrollView>
+
+            <HorizontalScrollView
+                android:id="@+id/scroll_anim_in"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fillViewport="true">
+
+                <RadioGroup
+                    android:id="@+id/anim_in_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="入场" />
+
+                    <RadioButton
+                        android:id="@+id/anim_fade_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="fadeIn" />
+
+                    <RadioButton
+                        android:id="@+id/anim_left_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="leftIn" />
+
+                    <RadioButton
+                        android:id="@+id/anim_top_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="topIn" />
+
+                    <RadioButton
+                        android:id="@+id/anim_right_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="rightIn" />
+
+                    <RadioButton
+                        android:id="@+id/anim_bottom_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="bottomIn" />
+
+                    <RadioButton
+                        android:id="@+id/anim_expand_top_left_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="expandTopLeftIn" />
+
+                    <RadioButton
+                        android:id="@+id/anim_expand_top_center_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="expandTopCenterIn" />
+
+                    <RadioButton
+                        android:id="@+id/anim_expand_top_right_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="expandTopRightIn" />
+
+                    <RadioButton
+                        android:id="@+id/anim_expand_center_left_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="expandCenterLeftIn" />
+
+                    <RadioButton
+                        android:id="@+id/anim_expand_center_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="expandCenterIn" />
+
+                    <RadioButton
+                        android:id="@+id/anim_expand_center_right_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="expandCenterRightIn" />
+
+                    <RadioButton
+                        android:id="@+id/anim_expand_bottom_left_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="expandBottomLeftIn" />
+
+                    <RadioButton
+                        android:id="@+id/anim_expand_bottom_center_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="expandBottomCenterIn" />
+
+                    <RadioButton
+                        android:id="@+id/anim_expand_bottom_right_in"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="expandBottomRightIn" />
+                </RadioGroup>
+
+            </HorizontalScrollView>
+
+            <HorizontalScrollView
+                android:id="@+id/scroll_anim_out"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fillViewport="true">
+
+                <RadioGroup
+                    android:id="@+id/anim_out_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="出场" />
+
+                    <RadioButton
+                        android:id="@+id/anim_fade_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="fadeOut" />
+
+                    <RadioButton
+                        android:id="@+id/anim_left_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="leftOut" />
+
+                    <RadioButton
+                        android:id="@+id/anim_top_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="topOut" />
+
+                    <RadioButton
+                        android:id="@+id/anim_right_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="rightOut" />
+
+                    <RadioButton
+                        android:id="@+id/anim_bottom_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="bottomOut" />
+
+                    <RadioButton
+                        android:id="@+id/anim_shrink_top_left_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="shrinkTopLeftOut" />
+
+                    <RadioButton
+                        android:id="@+id/anim_shrink_top_center_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="shrinkTopCenterOut" />
+
+                    <RadioButton
+                        android:id="@+id/anim_shrink_top_right_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="shrinkTopRightOut" />
+
+                    <RadioButton
+                        android:id="@+id/anim_shrink_center_left_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="shrinkCenterLeftOut" />
+
+                    <RadioButton
+                        android:id="@+id/anim_shrink_center_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="shrinkCenterOut" />
+
+                    <RadioButton
+                        android:id="@+id/anim_shrink_center_right_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="shrinkCenterRightOut" />
+
+                    <RadioButton
+                        android:id="@+id/anim_shrink_bottom_left_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="shrinkBottomLeftOut" />
+
+                    <RadioButton
+                        android:id="@+id/anim_shrink_bottom_center_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="shrinkBottomCenterOut" />
+
+                    <RadioButton
+                        android:id="@+id/anim_shrink_bottom_right_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="shrinkBottomRightOut" />
+                </RadioGroup>
+
+            </HorizontalScrollView>
+
+            <Button
+                android:id="@+id/btn_navigate_anim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()-> activity.onNavigateAnimClick() }"
+                android:text="跳转动画" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="scroll_anim,scroll_anim_in,scroll_anim_out,btn_navigate_anim"
+                app:flow_horizontalGap="10dp"
+                app:flow_verticalGap="10dp"
+                app:flow_wrapMode="chain"
+                app:layout_constraintTop_toBottomOf="@id/tv_title5" />
+
+            <TextView
+                android:id="@+id/tv_title6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Scheme跳转"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/flow5" />
+
+            <EditText
+                android:id="@+id/et_scheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="输入外部scheme"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title6" />
+
+            <Button
+                android:id="@+id/btn_scheme_internal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()-> activity.onInsideSchemeClick() }"
+                android:text="内部Scheme" />
+
+            <Button
+                android:id="@+id/btn_scheme_external"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()-> activity.onOutsideSchemeClick() }"
+                android:text="外部Scheme" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="btn_scheme_internal,btn_scheme_external"
+                app:flow_horizontalGap="10dp"
+                app:flow_verticalGap="10dp"
+                app:flow_wrapMode="chain"
+                app:layout_constraintTop_toBottomOf="@id/et_scheme" />
+
+            <TextView
+                android:id="@+id/tv_title7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="系统界面跳转"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/flow6" />
+
+            <Button
+                android:id="@+id/btn_choose_image"
+                android:onClick="@{()-> activity.onChooseImageClick() }"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选图片" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="btn_choose_image"
+                app:flow_horizontalGap="10dp"
+                app:flow_verticalGap="10dp"
+                app:flow_wrapMode="chain"
+                app:layout_constraintTop_toBottomOf="@id/tv_title7" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

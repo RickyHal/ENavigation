@@ -1,0 +1,22 @@
+dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url uri('./repo')
+        }
+//        jcenter() // Warning: this repository is going to shut down soon
+    }
+}
+include ':enavigation_impl',
+        ':enavigation_api',
+        ':enavigation_complier',
+        ':enavigation_plugin'
+
+include ':demo',
+        ':demo:app',
+        ':demo:base',
+        ':demo:module1',
+        ':demo:module2'
+
