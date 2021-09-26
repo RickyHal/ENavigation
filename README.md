@@ -1,5 +1,9 @@
 # ENavigation
-一个使用kotlin封装的路由框架，适用于组件化开发场景，目前支持组件自动注册，拦截器，子线程跳转，跳转动画等功能。<br/>ENavigaiton可以用来跳转Activity，内外部Scheme，系统界面等等。
+一个使用kotlin封装的路由框架，适用于组件化开发场景，目前支持路由自动注册，拦截器，子线程跳转，跳转动画等功能。<br/>ENavigaiton可以用来跳转Activity，内外部Scheme，系统界面等等。
+
+### 跳转流程
+
+![未命名文件 (1).jpg](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/036f863c4f8a4cf58265e351edf860f8~tplv-k3u1fbpfcp-watermark.image?)
 
 # 解决场景
 组件化开发时，需要跳转到指定的Activity，但是很多时候，目标Activity类又是不可见的，不能直接通过startActivity跳转，ENavigation便是解决这一场景的方案。另外，很多时候我们访问一个页面，需要先判断用户是否有访问该页面的权限，此时通常的做法就是在跳转之前做一个权限判断，但是如此这般，项目中就会多出很多重复的权限判断代码，使用ENavigation的拦截器便能很好的解决这一问题，只需要定义一个拦截器类即可。
@@ -57,7 +61,7 @@ apply plugin: 'com.ricky.enavigation.plugin'
 buildscript {
     ...
     dependencies {
-        classpath "com.ricky.enavigation.plugin:ENavigationPlugin:$plugin_lateast_version"
+        classpath "com.ricky.enavigation.plugin:ENavigationPlugin:$lateast_plugin_version"
     }
     
     ...
@@ -65,7 +69,7 @@ buildscript {
 
 ```
 ## 二、基础跳转
-使用路由跳转时需要在目标Activity上添加注解：
+使用路由跳转时需要在目标Activity上添加@HostAndPathAnno注解：
 ```kotlin
 @HostAndPathAnno("app/test")
 class TestActivity : AppCompatActivity() {
@@ -170,9 +174,9 @@ ENavigation.with(activity)
 可通过封装的onResult回调取到上个页面回传的值。
 ```kotlin
 ENavigation.with(activity)
-    .setHostAndPath(PathConfig.Module1.Test5.PATH)
+    .setHostAndPath("app/test")
     .onResult { requestCode, resultCode, data ->
-        val text = data?.getStringExtra(PathConfig.KEY_RESULT)
+        val text = data?.getStringExtra("result")
         Toast.makeText(this, "requestCode=$requestCode\nresultCode=$resultCode\n收到回传的值：$text", Toast.LENGTH_SHORT).show()
     }
     .navigate()
@@ -239,7 +243,7 @@ class TestActivity6 : AppCompatActivity() {
     }
 }
 ```
-可以通过interceptor或者interceptorNames的方式为目标Activity添加拦截器。注意通过interceptor设置的拦截器类不需要添加@InterceptorAnno注解，否则就会出现拦截两次的情况。
+可以通过interceptors或者interceptorNames的方式为目标Activity添加拦截器。注意通过interceptors设置的拦截器类不需要添加@InterceptorAnno注解，否则就会出现拦截两次的情况。
 ### 动态添加拦截器
 也可以在跳转时添加拦截器
 ```kotlin
@@ -345,21 +349,3 @@ ENavigation.with(this)
     }
     .navigate()
 ```
-
-## License
-
-> ```
-> Copyright 2021 RickyHal
->
-> Licensed under the Apache License, Version 2.0 (the "License");
-> you may not use this file except in compliance with the License.
-> You may obtain a copy of the License at
->
->    http://www.apache.org/licenses/LICENSE-2.0
->
-> Unless required by applicable law or agreed to in writing, software
-> distributed under the License is distributed on an "AS IS" BASIS,
-> WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-> See the License for the specific language governing permissions and
-> limitations under the License.
-> ```
