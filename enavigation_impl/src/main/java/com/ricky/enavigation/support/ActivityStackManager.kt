@@ -6,7 +6,7 @@ import android.os.Bundle
 
 /**
  *
- * @author haiyanghou
+ * @author RickyHal
  * @date 2021/9/9
  */
 class ActivityStackManager : Application.ActivityLifecycleCallbacks {

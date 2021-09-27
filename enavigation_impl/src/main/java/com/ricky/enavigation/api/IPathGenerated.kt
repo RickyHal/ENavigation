@@ -5,7 +5,7 @@ import java.util.*
 
 /**
  *
- * @author haiyanghou
+ * @author RickyHal
  * @date 2021/9/16
  */
 interface IPathGenerated {

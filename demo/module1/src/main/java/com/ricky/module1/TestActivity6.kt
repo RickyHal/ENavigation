@@ -16,7 +16,7 @@ import com.ricky.enavigation.api.anno.InterceptorAnno
 class TestActivity6 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_test6)
+        setContentView(com.ricky.base.R.layout.empty_activity)
     }
 }
 

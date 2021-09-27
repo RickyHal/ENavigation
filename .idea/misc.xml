@@ -6,6 +6,14 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_test.xml" value="0.3556231003039514" />
         <entry key="app/src/main/res/layout/activity_test1.xml" value="0.2722222222222222" />
+        <entry key="demo/app/src/main/res/layout/activity_main.xml" value="0.3558763931104357" />
+        <entry key="demo/app/src/main/res/layout/activity_test1.xml" value="0.2601851851851852" />
+        <entry key="demo/base/src/main/res/layout/empty_activity.xml" value="0.3558763931104357" />
+        <entry key="demo/module1/src/main/res/layout/activity_test2.xml" value="0.3558763931104357" />
+        <entry key="demo/module1/src/main/res/layout/activity_test4.xml" value="0.3558763931104357" />
+        <entry key="demo/module1/src/main/res/layout/activity_test5.xml" value="0.3558763931104357" />
+        <entry key="demo/module1/src/main/res/layout/activity_test6.xml" value="0.3558763931104357" />
+        <entry key="demo/module2/src/main/res/layout/activity_test3.xml" value="0.3558763931104357" />
         <entry key="test_module1/src/main/res/layout/activity_test2.xml" value="0.3558763931104357" />
         <entry key="test_module1/src/main/res/layout/activity_test4.xml" value="0.3558763931104357" />
         <entry key="test_module2/src/main/res/layout/activity_test3.xml" value="0.4966887417218543" />

@@ -6,7 +6,7 @@ import org.gradle.api.Project
 
 /**
  * 自动注册插件
- * @author haiyanghou
+ * @author RickyHal
  * @date 2021/9/22
  */
 class ASMUtilPlugin : Plugin<Project> {
