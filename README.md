@@ -30,6 +30,8 @@ kapt {
 
 dependencies {
     ...
+    // 核心库
+    implementation project(path: ':enavigation_impl')
     kapt project(path: ':enavigation_complier')
 }
 ```
