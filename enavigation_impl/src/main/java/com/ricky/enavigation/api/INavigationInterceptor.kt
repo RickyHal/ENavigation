@@ -6,7 +6,7 @@ import com.ricky.enavigation.core.NavigationRequest
 
 /**
  *
- * @author haiyanghou
+ * @author RickyHal
  * @date 2021/9/9
  */
 interface INavigationInterceptor {

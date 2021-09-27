@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * ASM字节码插入生成的类，用于自动注册
  *
- * @author haiyanghou
+ * @author RickyHal
  * @date 2021/9/24
  */
 public class ASMUtil {

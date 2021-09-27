@@ -6,7 +6,7 @@ import com.ricky.enavigation.error.NavigationException
 
 /**
  *
- * @author haiyanghou
+ * @author RickyHal
  * @date 2021/9/17
  */
 class NavigateInterceptor : INavigationInterceptor {

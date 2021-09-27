@@ -9,6 +9,6 @@ import com.ricky.enavigation.api.anno.HostAndPathAnno
 class TestActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_test2)
+        setContentView(com.ricky.base.R.layout.empty_activity)
     }
 }

@@ -5,7 +5,7 @@ import com.ricky.enavigation.api.INavigationInterceptor
 
 /**
  *
- * @author haiyanghou
+ * @author RickyHal
  * @date 2021/9/24
  */
 class DynamicAddedInterceptor : INavigationInterceptor {

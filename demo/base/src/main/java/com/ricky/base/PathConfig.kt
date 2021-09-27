@@ -2,7 +2,7 @@ package com.ricky.base
 
 /**
  *
- * @author haiyanghou
+ * @author RickyHal
  * @date 2021/9/17
  */
 object PathConfig {

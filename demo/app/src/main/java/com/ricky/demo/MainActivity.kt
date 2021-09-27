@@ -11,7 +11,6 @@ import com.ricky.demo.databinding.ActivityMainBinding
 import com.ricky.enavigation.ENavigation
 import com.ricky.enavigation.api.anno.HostAndPathAnno
 import com.ricky.enavigation.core.NavigationRequest
-import com.ricky.enavigation.error.NavigationException
 
 @HostAndPathAnno(PathConfig.App.Main.PATH)
 class MainActivity : AppCompatActivity() {
@@ -165,27 +164,6 @@ class MainActivity : AppCompatActivity() {
             .setScheme("enavigation://test")
             .onError {
                 it.printStackTrace()
-            }
-            .navigate()
-
-        ENavigation.with(this)
-            .setScheme("app/test")
-            .onError { exception ->
-                when (exception) {
-                    is NavigationException.ActivityDetachedException -> {
-                    }
-                    is NavigationException.NullActivityException -> {
-                    }
-                    is NavigationException.NullTargetException -> {
-                    }
-                    is NavigationException.InvalidCodeException -> {
-                    }
-                    is NavigationException.InvalidActivityException -> {
-                    }
-                    else -> {
-                        // 其它异常
-                    }
-                }
             }
             .navigate()
     }

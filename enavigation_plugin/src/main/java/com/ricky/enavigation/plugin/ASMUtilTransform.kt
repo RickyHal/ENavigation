@@ -12,12 +12,9 @@ import java.util.jar.JarOutputStream
 import java.util.zip.CRC32
 import java.util.zip.ZipEntry
 
-
-
-
 /**
  *
- * @author haiyanghou
+ * @author RickyHal
  * @date 2021/9/22
  */
 class ASMUtilTransform : Transform() {

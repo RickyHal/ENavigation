@@ -2,7 +2,7 @@ package com.ricky.enavigation.error
 
 /**
  *
- * @author haiyanghou
+ * @author RickyHal
  * @date 2021/9/24
  */
 class NavigateUncaughtExceptionHandler(private val throwError: (e: Exception) -> Unit) : Thread.UncaughtExceptionHandler {

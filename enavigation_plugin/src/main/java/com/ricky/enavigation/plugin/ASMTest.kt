@@ -4,7 +4,7 @@ import org.objectweb.asm.util.ASMifier
 
 /**
  * 生成ASM代码
- * @author haiyanghou
+ * @author RickyHal
  * @date 2021/9/24
  */
 fun test() {
