@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.ricky.enavigation.error.NavigationException
 import com.ricky.enavigation.impl.R
 
@@ -46,5 +48,12 @@ class DelegateFragment : Fragment() {
         } else {
             throwErrorBlock?.invoke(NavigationException.InvalidCodeException("Invalid request code: $requestCode"))
         }
+        parentFragmentManager.transact {
+            remove(this@DelegateFragment)
+        }
+    }
+
+    private fun FragmentManager.transact(block: FragmentTransaction.() -> Unit) {
+        beginTransaction().apply(block).commitAllowingStateLoss()
     }
 }
