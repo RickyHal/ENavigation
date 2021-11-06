@@ -386,6 +386,8 @@ class NavigationRequest(val activity: Activity? = null) : Serializable {
             isNavigating = false
         } catch (e: Exception) {
             throwError(e)
+        } finally {
+            isNavigating = false
         }
     }
 

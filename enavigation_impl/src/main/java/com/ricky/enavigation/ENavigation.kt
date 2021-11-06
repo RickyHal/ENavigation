@@ -2,9 +2,8 @@
 
 package com.ricky.enavigation
 
-import android.app.Activity
 import android.app.Application
-import androidx.fragment.app.Fragment
+import android.content.Context
 import com.ricky.enavigation.api.INavigationInterceptor
 import com.ricky.enavigation.bean.NavigationBean
 import com.ricky.enavigation.core.NavigationRequest
@@ -31,12 +30,8 @@ object ENavigation {
         return realENavigation.with()
     }
 
-    fun with(fragment: Fragment): NavigationRequest {
-        return realENavigation.with(fragment.requireActivity())
-    }
-
-    fun with(activity: Activity): NavigationRequest {
-        return realENavigation.with(activity = activity)
+    fun with(context: Context): NavigationRequest {
+        return realENavigation.with(context)
     }
 
     internal fun getNavigationBean(host: String, path: String): NavigationBean {
