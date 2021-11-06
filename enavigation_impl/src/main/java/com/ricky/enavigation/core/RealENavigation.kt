@@ -2,6 +2,8 @@ package com.ricky.enavigation.core
 
 import android.app.Activity
 import android.app.Application
+import android.content.Context
+import android.content.ContextWrapper
 import com.ricky.enavigation.api.IInterceptorGenerated
 import com.ricky.enavigation.api.INavigationInterceptor
 import com.ricky.enavigation.api.IPathGenerated
@@ -60,9 +62,25 @@ class RealENavigation {
         }
     }
 
-    fun with(activity: Activity): NavigationRequest {
-        return NavigationRequest(activity = activity)
+    fun with(context: Context): NavigationRequest {
+        return NavigationRequest(activity = context.toActivity())
     }
+
+    private fun Context.toActivity(): Activity? {
+        return when (this) {
+            is Activity -> this
+            is ContextWrapper -> {
+                val bContext = baseContext
+                if (bContext is Activity) {
+                    return bContext
+                } else {
+                    null
+                }
+            }
+            else -> null
+        }
+    }
+
 
     private fun initModule(moduleName: String) {
         initPath(moduleName)

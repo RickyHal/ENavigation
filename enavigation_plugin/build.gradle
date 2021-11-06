@@ -20,16 +20,18 @@ targetCompatibility = "8"
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId = 'com.ricky.enavigation.plugin'
-            artifactId = 'ENavigationPlugin'
+            groupId = 'com.ricky.enavigation'
+            artifactId = 'plugin'
             version = '1.0.0'
             from components.java
         }
     }
 
     repositories {
-        maven {
-            url = layout.buildDirectory.dir("../../repo")
+        if (!rootProject.ext.isDependMavenOnline) {
+            maven {
+                url = layout.buildDirectory.dir("../../repo")
+            }
         }
     }
 }
