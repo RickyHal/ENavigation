@@ -1,11 +1,10 @@
 # ENavigation
 
-一个使用kotlin封装的路由框架，适用于组件化开发场景，目前支持路由自动注册，拦截器，子线程跳转，跳转动画等功能。<br/>ENavigaiton可以用来跳转Activity，内外部Scheme，系统界面等等。
+一个使用kotlin封装的路由框架，适用于组件化开发场景，目前支持路由自动注册，拦截器，子线程跳转，跳转动画等功能。<br/>ENavigaiton可以用来跳转Activity，内外部Scheme，系统界面等等。[Demo下载]("/results/apk")
 
 ### 跳转流程
 
 <img src="/results/img.png"/>
-
 # 解决场景
 
 组件化开发时，需要跳转到指定的Activity，但是很多时候，目标Activity类又是不可见的，不能直接通过startActivity跳转，ENavigation便是解决这一场景的方案。另外，很多时候我们访问一个页面，需要先判断用户是否有访问该页面的权限，此时通常的做法就是在跳转之前做一个权限判断，但是如此这般，项目中就会多出很多重复的权限判断代码，使用ENavigation的拦截器便能很好的解决这一问题，只需要定义一个拦截器类即可。

@@ -46,10 +46,10 @@
           "name": "complier-1.0.0.jar",
           "url": "complier-1.0.0.jar",
           "size": 20987,
-          "sha512": "195ca955e4590a1fc405e179a334c1457b43afeb57fea4539bf3ab699c1fac3f66e0136f75e6947663da283051a6e2d2d6f231993ecaf5765c0462148d5cae23",
-          "sha256": "7af853f8daaf8a17c8937e7700542f9569a4502443916d79428da776041c5aec",
-          "sha1": "8b2a703e8cd59a1972264199ba2dd5ae01a63cca",
-          "md5": "2e53b9440ebe5ac53cdf7627081a24ad"
+          "sha512": "14a1cd606751327d1b317046f3eed8081908fce14b240222757eda7d508a2982f37c89fa0d9a55a833eefbfe309bfb946b6f2b46d2c2681ac9efa0156ba1dc34",
+          "sha256": "9ef0348248f2c4a977c7a076bf2636f58e2f50720e0b7da1d18668291d511d6b",
+          "sha1": "708215bb141dce0550140d10ab2b6415bb82a6c5",
+          "md5": "78a4eaa8155b72a8f71e1303306e8f01"
         }
       ]
     },
@@ -106,10 +106,10 @@
           "name": "complier-1.0.0.jar",
           "url": "complier-1.0.0.jar",
           "size": 20987,
-          "sha512": "195ca955e4590a1fc405e179a334c1457b43afeb57fea4539bf3ab699c1fac3f66e0136f75e6947663da283051a6e2d2d6f231993ecaf5765c0462148d5cae23",
-          "sha256": "7af853f8daaf8a17c8937e7700542f9569a4502443916d79428da776041c5aec",
-          "sha1": "8b2a703e8cd59a1972264199ba2dd5ae01a63cca",
-          "md5": "2e53b9440ebe5ac53cdf7627081a24ad"
+          "sha512": "14a1cd606751327d1b317046f3eed8081908fce14b240222757eda7d508a2982f37c89fa0d9a55a833eefbfe309bfb946b6f2b46d2c2681ac9efa0156ba1dc34",
+          "sha256": "9ef0348248f2c4a977c7a076bf2636f58e2f50720e0b7da1d18668291d511d6b",
+          "sha1": "708215bb141dce0550140d10ab2b6415bb82a6c5",
+          "md5": "78a4eaa8155b72a8f71e1303306e8f01"
         }
       ]
     }
