@@ -4,7 +4,7 @@
 
 ### 跳转流程
 
-![未命名文件 (1).jpg](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/036f863c4f8a4cf58265e351edf860f8~tplv-k3u1fbpfcp-watermark.image?)
+<img src="/results/img.png"/>
 
 # 解决场景
 
@@ -346,9 +346,10 @@ ENavigation.with(this)
 expandTopLeftIn() | 左上角展开 | - | | expandTopCenterIn() | 顶部展开 | - | | expandTopRightIn() | 右上角展开 | - | | expandCenterLeftIn() | 左边展开 | - | |
 expandCenterIn() | 中间展开 | - | | expandCenterRightIn() | 右边展开 | - | | expandBottomLeftIn() | 左下角展开 | - | | expandBottomCenterIn() | 下面展开 | - | |
 expandBottomRightIn() | 右下角展开 | - | | fadeOut() | - | 渐隐 | | topOut() | - | 顶部退出 | | rightOut() | - | 右边退出 | | bottomOut() | - | 下面退出 | | leftOut() |
+
 - | 左边退出 | | shrinkTopLeftOut() | - | 右上角退出 | | shrinkTopCenterOut() | - | 上面退出 | | shrinkTopRightOut() | - | 右上角退出 | | shrinkCenterLeftOut() | - |
-左边退出 | | shrinkCenterOut() | - | 中间退出 | | shrinkCenterRightOut() | - | 右边退出 | | shrinkBottomLeftOut() | - | 左下角退出 | | shrinkBottomCenterOut() | - |
-下面退出 | | shrinkBottomRightOut() | - | 右下角退出 |
+  左边退出 | | shrinkCenterOut() | - | 中间退出 | | shrinkCenterRightOut() | - | 右边退出 | | shrinkBottomLeftOut() | - | 左下角退出 | | shrinkBottomCenterOut() | - |
+  下面退出 | | shrinkBottomRightOut() | - | 右下角退出 |
 
 当然也可以使用自定义的动画
 
