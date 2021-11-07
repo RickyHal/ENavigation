@@ -374,35 +374,39 @@ class NavigationRequest(var activity: Activity? = null) : Serializable {
     }
 
     fun navigate() {
-        try {
-            val act = activity ?: throw NavigationException.NullActivityException("Current activity is null!")
-            if (act.isFinishing || act.isDestroyed) {
-                throw NavigationException.ActivityDetachedException("Current activity is destroyed!")
+        synchronized(this) {
+            if (isNavigating) return@synchronized
+            Utils.runOnUiThread {
+                try {
+                    val act = activity ?: throw NavigationException.NullActivityException("Current activity is null!")
+                    if (act.isFinishing || act.isDestroyed) {
+                        throw NavigationException.ActivityDetachedException("Current activity is destroyed!")
+                    }
+                    isNavigating = true
+                    doPrepare(act)
+                    doIntercept()
+                    isNavigating = false
+                } catch (e: Exception) {
+                    throwError(e)
+                } finally {
+                    // 释放资源
+                    isNavigating = false
+                    activity = null
+                    host = null
+                    path = null
+                    scheme = null
+                    interceptors.clear()
+                    animationIn = -1
+                    animationOut = -1
+                    intent = Intent()
+                    navigationBean = null
+                    exceptionCallback = null
+                    beforeAction = {}
+                    afterAction = {}
+                    onResult = null
+                    requestCode = RANDOM_REQUEST_CODE
+                }
             }
-            if (isNavigating) return
-            isNavigating = true
-            doPrepare(act)
-            doIntercept()
-            isNavigating = false
-        } catch (e: Exception) {
-            throwError(e)
-        } finally {
-            // 释放资源
-            isNavigating = false
-            activity = null
-            host = null
-            path = null
-            scheme = null
-            interceptors.clear()
-            animationIn = -1
-            animationOut = -1
-            intent = Intent()
-            navigationBean = null
-            exceptionCallback = null
-            beforeAction = {}
-            afterAction = {}
-            onResult = null
-            requestCode = RANDOM_REQUEST_CODE
         }
     }
 
