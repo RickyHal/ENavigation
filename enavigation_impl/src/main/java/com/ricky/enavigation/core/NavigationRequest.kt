@@ -28,7 +28,7 @@ import kotlin.random.Random
  * @date 2021/9/9
  */
 
-class NavigationRequest(val activity: Activity? = null) : Serializable {
+class NavigationRequest(var activity: Activity? = null) : Serializable {
     companion object {
         val RANDOM_REQUEST_CODE: Int get() = Random.nextInt(0, 65536)
     }
@@ -49,7 +49,7 @@ class NavigationRequest(val activity: Activity? = null) : Serializable {
     internal var animationOut: Int = -1
         private set
 
-    val intent: Intent = Intent()
+    var intent: Intent = Intent()
     private var navigationBean: NavigationBean? = null
 
     private var exceptionCallback: ((Exception) -> Unit)? = null
@@ -387,7 +387,22 @@ class NavigationRequest(val activity: Activity? = null) : Serializable {
         } catch (e: Exception) {
             throwError(e)
         } finally {
+            // 释放资源
             isNavigating = false
+            activity = null
+            host = null
+            path = null
+            scheme = null
+            interceptors.clear()
+            animationIn = -1
+            animationOut = -1
+            intent = Intent()
+            navigationBean = null
+            exceptionCallback = null
+            beforeAction = {}
+            afterAction = {}
+            onResult = null
+            requestCode = RANDOM_REQUEST_CODE
         }
     }
 
