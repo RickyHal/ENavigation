@@ -116,7 +116,7 @@ class InterceptorAnnoProcessor : BaseProcessor() {
             .addModifiers(KModifier.OVERRIDE)
             .addParameter("name", String::class)
             .addStatement("val interceptors =  getInterceptors() ")
-            .addStatement("val interceptor = interceptors.getOrDefault(name.capitalize(),null)")
+            .addStatement("val interceptor = interceptors.get(name.capitalize())")
             .addStatement("return interceptor")
             .returns(navigationClassName.copy(nullable = true))
             .build()
