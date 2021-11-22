@@ -126,7 +126,7 @@ class RealENavigation {
     }
 
     internal fun getNavigationBean(host: String, path: String): NavigationBean? {
-        return pathModules.getOrDefault(host, null)?.getPathMap()?.getOrDefault("$host/$path", null)
+        return pathModules[host]?.getPathMap()?.get("$host/$path")
     }
 
     internal fun getInterceptorByName(name: String): INavigationInterceptor? {
