@@ -37,6 +37,13 @@ class DelegateFragment : Fragment() {
         request.afterAction.invoke(activity)
     }
 
+    override fun onDestroy() {
+        throwErrorBlock = null
+        onResult = null
+        currentRequestCode = -1
+        super.onDestroy()
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == currentRequestCode) {
