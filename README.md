@@ -32,7 +32,6 @@ kapt {
 }
 
 dependencies {
-    ...
     // 核心库
     implementation project(path: ':enavigation_impl')
     kapt project(path: ':enavigation_complier')
@@ -71,12 +70,9 @@ apply plugin: 'com.ricky.enavigation.plugin'
 
 ```groovy
 buildscript {
-    ...
     dependencies {
         classpath "com.ricky.enavigation:plugin:$lateast_plugin_version"
     }
-
-    ...
 }
 
 ```
@@ -103,8 +99,8 @@ MainActivity跳转到TestActivity，两个Activity都在app模块。
 
 ```kotlin
 ENavigation.with(context)
-    .setHostAndPath(“ app / test ”）
-.navigate()
+    .setHostAndPath("app/test")
+    .navigate()
 ```
 
 ### 跨模块跳转
@@ -113,16 +109,16 @@ ENavigation.with(context)
 
 ```kotlin
 ENavigation.with(context)
-    .setHostAndPath(“ app / test1 ”）
-.navigate()
+    .setHostAndPath("app/test1")
+    .navigate()
 ```
 
 * 目标Activity不可见 MainActivity跳转到TestActivity2，TestActivity2在module2模块，app模块引用base和module2模块，TestActivity2类对base模块不可见，在base模块中执行跳转。
 
 ```kotlin
 ENavigation.with(context)
-    .setHostAndPath(“ app / test1 ”）
-.navigate()
+    .setHostAndPath("app/test1")
+    .navigate()
 ```
 
 ### 子线程跳转
@@ -132,8 +128,8 @@ ENavigation.with(context)
 ```kotlin
 Thread {
     ENavigation.with(context)
-        .setHostAndPath(“ app / test1 ”）
-    .navigate()
+        .setHostAndPath("app/test1")
+        .navigate()
 }.start()
 ```
 
@@ -142,8 +138,8 @@ Thread {
 ```kotlin
 Thread {
     ENavigation.with()
-        .setHostAndPath(“ app / test1 ”）
-    .navigate()
+        .setHostAndPath("app/test1")
+        .navigate()
 }.start()
 ```
 
@@ -204,7 +200,7 @@ ENavigation.with(context)
 
 ### 参数传入
 
-ENavigation封装了一系列设置传入参数的方法，其都作用于内部的intent，具体方法可参考系统地Intent类。这里举个跳转页面传字符串的例子。
+ENavigation封装了一系列设置传入参数的方法，其都作用于内部的intent，具体方法可参考系统的Intent类。这里举个跳转页面传字符串的例子。
 
 ```kotlin
 ENavigation.with(context)
@@ -341,15 +337,43 @@ ENavigation.with(this)
     .navigate()
 ```
 
-跳转动画方法说明 | 方法名 | 入场 | 出场 | | --- | --- | --- | | fade() | 渐显 | 渐隐 | | top() | 上面进入 | 渐隐 | | right() | 右边进入 | 渐隐 | | bottom() | 底部进入 | 渐隐 | | left() |
-左边进入 | 渐隐 | | fadeIn() | 渐显 | - | | topIn() | 上面进入 | - | | rightIn() | 右边进入 | - | | bottomIn() | 底部进入 | - | | leftIn() | 左边进入 | - | |
-expandTopLeftIn() | 左上角展开 | - | | expandTopCenterIn() | 顶部展开 | - | | expandTopRightIn() | 右上角展开 | - | | expandCenterLeftIn() | 左边展开 | - | |
-expandCenterIn() | 中间展开 | - | | expandCenterRightIn() | 右边展开 | - | | expandBottomLeftIn() | 左下角展开 | - | | expandBottomCenterIn() | 下面展开 | - | |
-expandBottomRightIn() | 右下角展开 | - | | fadeOut() | - | 渐隐 | | topOut() | - | 顶部退出 | | rightOut() | - | 右边退出 | | bottomOut() | - | 下面退出 | | leftOut() |
+跳转动画方法说明
 
-- | 左边退出 | | shrinkTopLeftOut() | - | 右上角退出 | | shrinkTopCenterOut() | - | 上面退出 | | shrinkTopRightOut() | - | 右上角退出 | | shrinkCenterLeftOut() | - |
-  左边退出 | | shrinkCenterOut() | - | 中间退出 | | shrinkCenterRightOut() | - | 右边退出 | | shrinkBottomLeftOut() | - | 左下角退出 | | shrinkBottomCenterOut() | - |
-  下面退出 | | shrinkBottomRightOut() | - | 右下角退出 |
+| 方法名 | 入场 | 出场 | 
+| --- | --- | --- | 
+| fade() | 渐显 | 渐隐 | 
+| top() | 上面进入 | 渐隐 | 
+| right() | 右边进入 | 渐隐 | 
+| bottom() | 底部进入 | 渐隐 | 
+| left() |左边进入 | 渐隐 |
+| fadeIn() | 渐显 | - | 
+| topIn() | 上面进入 | - | 
+| rightIn() | 右边进入 | - | 
+| bottomIn() | 底部进入 | - | 
+| leftIn() | 左边进入 | - | 
+| expandTopLeftIn() | 左上角展开 | - | 
+| expandTopCenterIn() | 顶部展开 | - | 
+| expandTopRightIn() | 右上角展开 | - | 
+| expandCenterLeftIn() | 左边展开 | - | 
+| expandCenterIn() | 中间展开 | - | 
+| expandCenterRightIn() | 右边展开 | - | 
+| expandBottomLeftIn() | 左下角展开 | - | 
+| expandBottomCenterIn() | 下面展开 | - | 
+| expandBottomRightIn() | 右下角展开 | - | 
+| fadeOut() | - | 渐隐 | 
+| topOut() | - | 顶部退出 | 
+| rightOut() | - | 右边退出 | 
+| bottomOut() | - | 下面退出 |
+| leftOut() | - | 左边退出 | 
+| shrinkTopLeftOut() | - | 右上角退出 | 
+| shrinkTopCenterOut() | - | 上面退出 | 
+| shrinkTopRightOut() | - | 右上角退出 | 
+| shrinkCenterLeftOut() | - | 左边退出 | 
+| shrinkCenterOut() | - | 中间退出 | 
+| shrinkCenterRightOut() | - | 右边退出 | 
+| shrinkBottomLeftOut() | - | 左下角退出 | 
+| shrinkBottomCenterOut() | - |下面退出 | 
+| shrinkBottomRightOut() | - | 右下角退出 |
 
 当然也可以使用自定义的动画
 
@@ -399,24 +423,6 @@ ENavigation.with(this)
     }
     .navigate()
 ```
-
-## License
-
-> ```
-> Copyright 2021 RickyHal
->
-> Licensed under the Apache License, Version 2.0 (the "License");
-> you may not use this file except in compliance with the License.
-> You may obtain a copy of the License at
->
->    http://www.apache.org/licenses/LICENSE-2.0
->
-> Unless required by applicable law or agreed to in writing, software
-> distributed under the License is distributed on an "AS IS" BASIS,
-> WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-> See the License for the specific language governing permissions and
-> limitations under the License.
-> ```
 
 ## License
 
