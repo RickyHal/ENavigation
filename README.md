@@ -19,12 +19,10 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    // 自动注册路由，如果不想手动注册路由，则引用这个插件即可
     id 'com.ricky.enavigation.plugin'
 }
-android {
-    compileSdk 30
-    // ...
-}
+// 在使用到本组件的模块下配置注解参数，key为host，value通常为本模块模块名
 kapt {
     arguments {
         arg("host", "app")
@@ -34,6 +32,7 @@ kapt {
 dependencies {
     // 核心库
     implementation project(path: ':enavigation_impl')
+    // 注解处理器
     kapt project(path: ':enavigation_complier')
 }
 ```
