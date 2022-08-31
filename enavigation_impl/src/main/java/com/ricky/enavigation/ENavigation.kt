@@ -16,6 +16,7 @@ import com.ricky.enavigation.error.NavigationException
  * @date 2021/9/9
  */
 object ENavigation {
+    const val TAG = "ENavigation"
     private val realENavigation: RealENavigation by lazy { RealENavigation() }
 
     fun init(application: Application, vararg moduleName: String) {

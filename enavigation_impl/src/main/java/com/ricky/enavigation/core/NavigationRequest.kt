@@ -9,13 +9,13 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Looper
 import android.os.Parcelable
+import android.util.Log
 import androidx.annotation.AnimRes
 import androidx.fragment.app.FragmentActivity
 import com.ricky.enavigation.ENavigation
 import com.ricky.enavigation.api.INavigationInterceptor
 import com.ricky.enavigation.bean.NavigationBean
 import com.ricky.enavigation.error.NavigateUncaughtExceptionHandler
-import com.ricky.enavigation.error.NavigationException
 import com.ricky.enavigation.impl.R
 import com.ricky.enavigation.support.Utils
 import java.io.Serializable
@@ -378,9 +378,14 @@ class NavigationRequest(var activity: Activity? = null) : Serializable {
             if (isNavigating) return@synchronized
             Utils.runOnUiThread {
                 try {
-                    val act = activity ?: throw NavigationException.NullActivityException("Current activity is null!")
+                    val act = activity
+                    if (act == null) {
+                        Log.e(ENavigation.TAG, "Current activity is null!")
+                        return@runOnUiThread
+                    }
                     if (act.isFinishing || act.isDestroyed) {
-                        throw NavigationException.ActivityDetachedException("Current activity is destroyed!")
+                        Log.e(ENavigation.TAG, "Current activity is destroyed!")
+                        return@runOnUiThread
                     }
                     isNavigating = true
                     doPrepare(act)
@@ -410,38 +415,44 @@ class NavigationRequest(var activity: Activity? = null) : Serializable {
         }
     }
 
-    private fun doPrepare(activity: Activity) {
+    private fun doPrepare(activity: Activity): Boolean {
         if (scheme.isNullOrEmpty()) {
             if (intent.action.isNullOrEmpty()) {
-                prepareForActivity(activity)
+                return prepareForActivity(activity)
             }
+            return true
             // 隐式跳转不需要准备
         } else {
-            prepareForScheme()
+            return prepareForScheme()
         }
     }
 
-    private fun prepareForActivity(activity: Activity) {
+    private fun prepareForActivity(activity: Activity): Boolean {
         val realHost = host
         val realPath = path
         if (realHost.isNullOrEmpty()) {
-            throw NavigationException.NullTargetException("invalid host: $realHost")
+            Log.e(ENavigation.TAG, "invalid host: $realHost")
+            return false
         }
         if (realPath.isNullOrEmpty()) {
-            throw NavigationException.NullTargetException("invalid path: $realHost")
+            Log.e(ENavigation.TAG, "invalid path: $realHost")
+            return false
         }
         navigationBean = ENavigation.getNavigationBean(realHost, realPath).also {
             intent.component = ComponentName(activity, it.target.java)
         }
+        return true
     }
 
-    private fun prepareForScheme() {
+    private fun prepareForScheme(): Boolean {
         intent.action = Intent.ACTION_VIEW
         if (scheme.isNullOrEmpty()) {
-            throw  NavigationException.NullTargetException("Target scheme is empty: $scheme")
+            Log.e(ENavigation.TAG, "Target scheme is empty: $scheme")
+            return false
         } else {
             intent.data = Uri.parse(scheme)
         }
+        return true
     }
 
     private fun doIntercept() {
